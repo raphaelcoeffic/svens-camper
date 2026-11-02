@@ -2,6 +2,8 @@
 
 Emulates the 12V charger of a Westfalia camper on its LIN bus, so the on-board controller allows electric heating on solar and battery power, without mains. It runs on a reused "smart LIN / TTL" adapter board (STM32F103, TJA1021).
 
+![The bench setup: the adapter board wired to an RP2040-Zero, with a 2N7000 LIN driver on perfboard and Saleae clips](docs/bench-setup.jpg)
+
 **Status:** tested on the bench against a replay of the controller's schedule, not yet on the camper. Whether it unlocks heating is unknown.
 
 - [`FINDINGS.md`](FINDINGS.md): what the LIN traffic means, from the captures
