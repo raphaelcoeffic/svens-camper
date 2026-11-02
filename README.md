@@ -11,3 +11,7 @@ Emulates the 12V charger of a Westfalia camper on its LIN bus, so the on-board c
 - `Sven-LIN-trace.txt`: serial log of the bus
 
 The original Saleae captures (`.sal`, about 875 MB) aren't in this repository, as they're too large for it.
+
+## License
+
+[MIT](LICENSE)
