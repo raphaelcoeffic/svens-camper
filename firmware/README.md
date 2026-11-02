@@ -7,7 +7,7 @@ Emulates the camper's 12V charger on LIN, as described in `../FINDINGS.md`, on t
 - Answers ID 19 with status `01` from the first poll, then `09` after 7 s. A gap of over 3 s in polling restarts this.
 - Reports current from ID 22 at 472 mA per count, or 0 if that's negative, more than 2 s old, or before status `09`.
 - Answers 3D with `18 06 F2 34 12 0E 00 01` once, after a 3C request for function `0E`. Stays silent after `0C`.
-- Battery protection, reading ID 22 passively: below 11.0 V for 10 s, or with no valid ID 22 for 2 s, it emulates a mains loss as in the traces: `00 01` for 1.7 s, then silence. After a low-voltage cut, it comes back after 60 s above 12.8 V, starting at status `01` with the 7 s delay again. After a lost sensor, it comes back as soon as ID 22 returns. The limits are constants at the top of `charger_emu/main.c`.
+- Battery protection, reading ID 22 passively: below 11.8 V for 10 s, or with no valid ID 22 for 2 s, it emulates a mains loss as in the traces: `00 01` for 1.7 s, then silence. After a low-voltage cut, it comes back after 60 s above 13.6 V, starting at status `01` with the 7 s delay again. After a lost sensor, it comes back as soon as ID 22 returns. The limits are console settings, and the defaults suit a 12V LiFePO4 battery.
 - Whether the controller actually stops heating on this sequence is untested.
 - To save power, it runs at 2 MHz, sleeps between events and only flashes STA briefly. This halved the draw on the bench supply, from 0.02 A to 0.01 A, as far as its 10 mA resolution shows.
 
@@ -74,8 +74,8 @@ Open the board's RX/TX at 57600 8N1 with any terminal, for example `screen /dev/
 | `ma_count` | 472 | mA per ID 19 count |
 | `mains_ms` | 7000 | Status `01` time before `09` |
 | `cutoff` | 1 | Battery protection on or off |
-| `cut_mv`, `cut_s` | 11000, 10 | Cut below this voltage, for this long |
-| `rec_mv`, `rec_s` | 12800, 60 | Recover above this voltage, for this long |
+| `cut_mv`, `cut_s` | 11800, 10 | Cut below this voltage, for this long |
+| `rec_mv`, `rec_s` | 13600, 60 | Recover above this voltage, for this long |
 | `silent_ms` | 1700 | Status `01` time between a cut and silence |
 | `resp_us` | 130 | Reply delay; 130 gives about 370 µs on the bus |
 | `stats_s` | 0 | Print the counters this often, 0 off |

@@ -201,7 +201,7 @@ Restarting the controller is not an option, because it would mean disconnecting 
 
 Electrical cautions:
 - The heater runs from the 12V batteries, even with the charger connected (stated by the owner). Its current draw is not known yet.
-- With the emulator, nothing replaces the charger's input, so the load comes from the batteries and solar alone. Whether the controller then protects the batteries is unknown. The emulator reports a mains loss below 11.0 V, but whether that stops the heater is untested.
+- With the emulator, nothing replaces the charger's input, so the load comes from the batteries and solar alone. Whether the controller then protects the batteries is unknown. The emulator reports a mains loss below 11.8 V, but whether that stops the heater is untested.
 - With a load on, battery current no longer equals charger current. The emulator derives ID 19 current from ID 22, so it would report 0 while the heater draws more than the solar supplies. How the controller reacts is unknown.
 
 An implementation for a reused adapter board is in `firmware/`. It has passed a bench self-test, not yet with an external master or on the camper.
