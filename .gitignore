@@ -1,0 +1,6 @@
+# Saleae captures: about 875 MB, too large for GitHub
+*.sal
+# Build output
+*.elf
+*.bin
+__pycache__/
